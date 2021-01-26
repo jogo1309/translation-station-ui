@@ -4,10 +4,10 @@ import {
   Divider,
   Paper,
   Typography,
-  InputLabel,
   Select,
   FormControl,
   MenuItem,
+  FormLabel,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Translation from "./Translation";
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
   top: {
     display: "flex",
+    flex: "1 1 auto",
+    alignItems: "center",
+    paddingBottom: theme.spacing(1),
     justifyContent: "space-between",
   },
   select: {
@@ -39,9 +42,20 @@ export default function Home() {
     <Container maxWidth="lg">
       <Paper>
         <div className={classes.root}>
-          <Typography component="h4" variant="h4">
-            Translation Station
-          </Typography>
+          <div className={classes.top}>
+            <Typography component="h4" variant="h4">
+              Translation Station
+            </Typography>
+
+            <FormControl>
+              <FormLabel component="label">Translation model: </FormLabel>
+              <Select variant="outlined">
+                {Models.map((model) => (
+                  <MenuItem value={model}>{model}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
 
           <Divider />
 
