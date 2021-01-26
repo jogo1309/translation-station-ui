@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   select: {
-    textAlign: "center",
     paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
 }));
 
