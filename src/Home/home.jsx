@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Divider,
@@ -38,6 +38,12 @@ export default function Home() {
 
   const Models = ["GRU", "LSTM", "BiDi"];
 
+  const [modelType, setModelType] = useState("GRU");
+
+  const handleSelect = (e) => {
+    setModelType(e.target.value);
+  };
+
   return (
     <Container maxWidth="lg">
       <Paper>
@@ -49,9 +55,15 @@ export default function Home() {
 
             <FormControl>
               <FormLabel component="label">Translation model: </FormLabel>
-              <Select variant="outlined">
+              <Select
+                variant="outlined"
+                value={modelType}
+                onChange={handleSelect}
+              >
                 {Models.map((model) => (
-                  <MenuItem value={model}>{model}</MenuItem>
+                  <MenuItem value={model} key={model}>
+                    {model}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -59,7 +71,7 @@ export default function Home() {
 
           <Divider />
 
-          <Translation />
+          <Translation model={modelType} />
         </div>
       </Paper>
     </Container>
