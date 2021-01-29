@@ -1,3 +1,4 @@
+import SnackbarUtils from "../SnackbarUtils";
 export default async function request(endpoint, config) {
   config = {
     ...config,
@@ -16,6 +17,7 @@ export default async function request(endpoint, config) {
     console.log(errorMessage);
     //SnackbarUtils.error(res.status + ": " + errorMessage.message);
   } else {
+    SnackbarUtils.success("success");
     return await res.json();
   }
 }
