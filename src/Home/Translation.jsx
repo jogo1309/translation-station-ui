@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import TranslateIcon from "@material-ui/icons/Translate";
 import translateAPI from "./API/translate";
+import SnackbarUtils from "./SnackbarUtils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,9 +27,14 @@ export default function Translation(props) {
   };
 
   const translate = async (e) => {
-    console.log(model);
-    const fr = await translateAPI(transVals.eng, model);
-    setTransVals({ ...transVals, fr: fr.fr });
+    if (transVals.eng) {
+      const fr = await translateAPI(transVals.eng, model);
+      setTransVals({ ...transVals, fr: fr.fr });
+    } else {
+      SnackbarUtils.warning(
+        "Warning: No english text entered! Please enter some text and try again."
+      );
+    }
   };
 
   return (

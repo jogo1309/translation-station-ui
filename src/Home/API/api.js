@@ -15,9 +15,11 @@ export default async function request(endpoint, config) {
   if (!res.ok) {
     const errorMessage = await res.clone().json();
     console.log(errorMessage);
-    //SnackbarUtils.error(res.status + ": " + errorMessage.message);
+    SnackbarUtils.error(
+      "API returned " + res.status + ": " + errorMessage.message
+    );
   } else {
-    SnackbarUtils.success("success");
+    SnackbarUtils.success("API returned 200: success text was translated");
     return await res.json();
   }
 }

@@ -27,7 +27,13 @@ export default {
     });
   },
   warning(msg, props) {
-    this.toast(msg, "warning", props);
+    this.toast(msg, "warning", {
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "right",
+      },
+      ...props,
+    });
   },
   info(msg, props) {
     this.toast(msg, "info", props);
