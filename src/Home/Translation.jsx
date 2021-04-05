@@ -29,7 +29,9 @@ export default function Translation(props) {
   const translate = async (e) => {
     if (transVals.eng) {
       const fr = await translateAPI(transVals.eng, model);
-      setTransVals({ ...transVals, fr: fr.fr });
+      fr
+        ? setTransVals({ ...transVals, fr: fr.fr })
+        : setTransVals({ ...transVals, fr: "" });
     } else {
       SnackbarUtils.warning(
         "Warning: No english text entered! Please enter some text and try again."
