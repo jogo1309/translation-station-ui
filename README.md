@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Translation Station UI
+
+The UI for my final year project the Translation Station. Built in React it connects to the associated API to display the inputs and outputs from the models.
+Before you get started you will need to ensure you have node installed on your computer.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
